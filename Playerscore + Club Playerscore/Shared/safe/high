@@ -1,0 +1,27 @@
+#!/bin/bash
+
+curl -sS https://exostats.nl | grep -Po 'level=[0-9a-f-]+.amp.version=.' | sed 's/&amp;/\&/' | sort -u | while read levelurl; do curl -Ss "https://exostats.nl/?$levelurl" > /home/liveuser/Shared/exo"$levelurl"; done
+
+for lvl in /home/liveuser/Shared/exolevel\=*version\=?; do cat "$lvl" | grep country/ | cut -d ' ' -f 2,4- | sed -E 's@(.*) #([0-9]+)$@\1@' | sed -E 's@<a href=../.player=[a-zA-Z0-9]+.>@@' | sed 's@</a>@@g' | sed -E 's@href=../.country=...>@@' | sed 's/  / /' | sed -E 's/([0-9]{3})s /\1 /' | sed -E 's/ Sep / 2022-09-/' | sed -E 's/ Aug / 2022-08-/' | sed -E 's/ Jul / 2022-07-/' | sed -E 's/ Jun / 2022-06-/'| sed -E 's/ Oct / 2022-10-/' | sed -E 's/ Nov / 2022-11-/' | sed -E 's/ Dec / 2022-12-/' | sed -E 's/ Jan / 2023-01-/' > "$lvl.txt"; done
+
+rename -v .txt '' *
+
+rename -v exolevel= '' *
+
+rename -v version=1 _v1 *
+
+rename -v version=2 _v2 *
+
+rename -v version=3 _v3 *
+
+rename -v version=4 _v4 *
+
+rename -v \& '' *
+
+rename -v \& '' *
+
+rename -v \& '' *
+
+rename -v \& '' *
+
+rename -v \& '' *

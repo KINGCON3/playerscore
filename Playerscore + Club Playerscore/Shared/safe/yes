@@ -1,0 +1,15 @@
+#!/bin/bash
+
+curl -sS https://exo.lgms.nl | grep -Po 'level=[0-9a-f-]+.version=.' | sort -u | while read levelurl; do curl -Ss "https://exo.lgms.nl/?$levelurl" > /home/student/Shared/exo"$levelurl"; done
+
+for lvl in /home/student/Shared/exolevel\=*version\=?; do cat "$lvl" | grep country= | cut -d ' ' -f 2,4- | sed -E 's@(.*) #([0-9]+)$@\1@' | sed -E 's@<a href=../.player=[a-zA-Z0-9]+.>@@' | sed 's@</a>@@g' | sed -E 's@href=../.country=...>@@' | sed 's/  / /' | sed -E 's/([0-9]{3})s /\1 /' | sed -E 's/ Aug / 2022-08-/' | sed -E 's/ Jul / 2022-07-/' > "$lvl.txt"; done
+
+rename -v exolevel= '' *
+
+rename -v &version=1 '' *
+
+rename -v &version=2 '' *
+
+rename -v &version=3 '' *
+
+rename -v &version=4 '' *
