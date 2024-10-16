@@ -1,6 +1,6 @@
 Exostats.nl is a website (not by me) that stores the high scores from all users in the mobile game exoracer: https://exoracer.io/
 
-The Shared folder contains scripts which scraped the leaderboard data from exostats.nl to be used in ExoHighscores
+The Shared folder for VirtualBox contains bash scripts which scraped the leaderboard data from exostats.nl to be used in ExoHighscores
 
 ExoHighscores.java complies these text files consisting of leaderboard data and converts each player's performance to points
 
