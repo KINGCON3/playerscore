@@ -1,4 +1,4 @@
-Exostats.nl is a website that stores the high scores from all users in the mobile game exoracer: https://exoracer.io/
+Exostats.nl is a website (not by me) that stores the high scores from all users in the mobile game exoracer: https://exoracer.io/
 
 The Shared folder contains scripts which scraped the leaderboard data from exostats.nl to be used in ExoHighscores
 
